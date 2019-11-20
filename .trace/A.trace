@@ -1,0 +1,59 @@
+{
+ "displayTimeUnit": "ms",
+ "traceEvents": [
+  {
+   "ts": 0,
+   "pid": "TRUCK:1",
+   "tid": "TRUCK:1",
+   "cat": "ddd",
+   "args": {
+    "cargo": [
+     "CARGO:Factory_A_1"
+    ],
+    "transport": "TRUCK:1"
+   },
+   "ph": "B",
+   "name": "Factory-Port"
+  },
+  {
+   "ts": 1,
+   "pid": "TRUCK:1",
+   "tid": "TRUCK:1",
+   "cat": "ddd",
+   "args": {
+    "cargo": [
+     "CARGO:Factory_A_1"
+    ],
+    "transport": "TRUCK:1"
+   },
+   "ph": "E"
+  },
+  {
+   "ts": 1,
+   "pid": "SHIP:3",
+   "tid": "SHIP:3",
+   "cat": "ddd",
+   "args": {
+    "cargo": [
+     "CARGO:Factory_A_1"
+    ],
+    "transport": "SHIP:3"
+   },
+   "ph": "B",
+   "name": "Port-A"
+  },
+  {
+   "ts": 5,
+   "pid": "SHIP:3",
+   "tid": "SHIP:3",
+   "cat": "ddd",
+   "args": {
+    "cargo": [
+     "CARGO:Factory_A_1"
+    ],
+    "transport": "SHIP:3"
+   },
+   "ph": "E"
+  }
+ ]
+}
