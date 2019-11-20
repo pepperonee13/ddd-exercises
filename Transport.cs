@@ -4,6 +4,8 @@ namespace ddd_exercise
 {
     internal abstract class Transport
     {
+        private static int nextId = 1;
+        public int Id { get; }
         private string _name;
         protected string _location;
 
@@ -14,6 +16,7 @@ namespace ddd_exercise
 
         public Transport(string name, string location)
         {
+            Id = nextId++;
             _name = name;
             _location = location;
         }
@@ -31,7 +34,7 @@ namespace ddd_exercise
         private void HandleArrived()
         {
             _location = _currentTarget;
-            Console.WriteLine($"{Dispatcher._elapsedHours}: {_name} arrived at {_location}");
+            Log(EventType.ARRIVE);
         }
 
         private void TryUnload()
@@ -69,13 +72,35 @@ namespace ddd_exercise
             if (!HasTarget() || Arrived)
             {
                 _currentTarget = PlanNextTarget();
-                if (_currentTarget != _location)
+                if (_currentTarget != null && _currentTarget != _location)
                 {
                     _remainingTravelTime = Dispatcher.GetDistance(_location, _currentTarget);
+                    Log(EventType.DEPART);
                 }
             }
         }
 
+        private void Log(string eventType)
+        {
+            Logger.Log(new LogMessage
+            {
+                Event = eventType,
+                Kind = this is Truck ? "TRUCK" : "SHIP",
+                TransportId = Id,
+                Destination = _currentTarget,
+                Location = _location,
+                Time = Dispatcher._elapsedHours,
+                Cargo = _cargo != null ? new CargoLog[]
+                {
+                            new CargoLog
+                            {
+                                CargoId = _cargo.Id,
+                                Destination = _cargo.Target,
+                                Origin = _cargo.Origin
+                            }
+                } : null
+            });
+        }
 
         protected void Load(Cargo cargo)
         {

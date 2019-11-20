@@ -1,0 +1,4 @@
+{"event":"DEPART","time":0,"transport_id":1,"kind":"TRUCK","location":"Factory","destination":"B","cargo":[{"cargo_id":1,"destination":"B","origin":"Factory"}]}
+{"event":"DEPART","time":0,"transport_id":2,"kind":"TRUCK","location":"Factory","destination":"B","cargo":[{"cargo_id":2,"destination":"B","origin":"Factory"}]}
+{"event":"ARRIVE","time":5,"transport_id":1,"kind":"TRUCK","location":"B","destination":"B","cargo":[{"cargo_id":1,"destination":"B","origin":"Factory"}]}
+{"event":"ARRIVE","time":5,"transport_id":2,"kind":"TRUCK","location":"B","destination":"B","cargo":[{"cargo_id":2,"destination":"B","origin":"Factory"}]}
