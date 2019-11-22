@@ -48,7 +48,6 @@ namespace ddd_exercise
         private void Unload()
         {
             _cargo.Location = _location;
-            Console.WriteLine($"{Dispatcher._elapsedHours}: {_name} unloaded {_cargo.Target} in {_cargo.Location}");
             _currentTarget = null;
             _cargo = null;
         }
@@ -62,10 +61,6 @@ namespace ddd_exercise
                 {
                     HandleArrived();
                     TryUnload();
-                }
-                else
-                {
-                    Console.WriteLine($"{Dispatcher._elapsedHours}: {_name} has {_remainingTravelTime} more hour(s) to go to reach {_currentTarget}");
                 }
             }
 
@@ -106,7 +101,6 @@ namespace ddd_exercise
         {
             _cargo = cargo;
             _cargo.Location = _name;
-            Console.WriteLine($"{Dispatcher._elapsedHours}: {_name} picked up {_cargo.Target} at {_location}");
         }
 
         protected abstract string PlanNextTarget();
