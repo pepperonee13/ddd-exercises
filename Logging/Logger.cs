@@ -29,6 +29,10 @@ namespace ddd_exercise
                 Directory.CreateDirectory(BaseFolder);
             }
             _path = $"{BaseFolder}/{scenario}.log";
+            if (File.Exists(_path))
+            {
+                File.Delete(_path);
+            }
 
             _initialized = true;
         }
